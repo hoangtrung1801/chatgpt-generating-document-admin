@@ -5,6 +5,7 @@ import {
     EditGuesser,
     ResourceContext,
     List,
+    ShowGuesser,
 } from "react-admin";
 import {
     CategoryCreate,
@@ -39,6 +40,7 @@ function App() {
                 list={CategoryList}
                 edit={CategoryEdit}
                 create={CategoryCreate}
+                show={ShowGuesser}
                 recordRepresentation="name"
             />
             <Resource
@@ -46,6 +48,7 @@ function App() {
                 list={QuestionList}
                 edit={QuestionEdit}
                 create={QuestionCreate}
+                recordRepresentation="name"
             />
         </Admin>
     );

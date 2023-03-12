@@ -8,6 +8,7 @@ import {
     List,
     ReferenceField,
     ReferenceInput,
+    SelectInput,
     SimpleForm,
     SimpleFormIterator,
     TextField,
@@ -45,10 +46,12 @@ export const QuestionEdit = () => (
                 <SimpleFormIterator>
                     <TextInput source="name" />
                     <TextInput source="description" />
-                    <BooleanInput
-                        source="isAdvanced"
-                        label="Advanced"
-                        defaultValue={false}
+                    <SelectInput
+                        source="type"
+                        choices={[
+                            { id: "enough", name: "Enough" },
+                            { id: "additional", name: "Additional" },
+                        ]}
                     />
                 </SimpleFormIterator>
             </ArrayInput>
@@ -69,12 +72,25 @@ export const QuestionCreate = () => (
             />
             <BooleanInput source="status" defaultValue={true} />
             <ReferenceInput source="categoryId" reference="categories" />
+            <SelectInput
+                source="type"
+                choices={[
+                    { id: "yesno", name: "Yes/No choice" },
+                    { id: "single", name: "Single choice" },
+                ]}
+            />
             <ArrayInput source="options" label="Options">
                 <SimpleFormIterator>
                     <TextInput source="name" />
                     <TextInput source="description" />
-                    <BooleanInput source="isAdvanced" label="Advanced" />
-                    defaultValue={false}
+                    {/* <BooleanInput source="isAdvanced" label="Advanced" /> */}
+                    <SelectInput
+                        source="type"
+                        choices={[
+                            { id: "enough", name: "Enough" },
+                            { id: "additional", name: "Additional" },
+                        ]}
+                    />
                 </SimpleFormIterator>
             </ArrayInput>
         </SimpleForm>

@@ -7,7 +7,9 @@ import {
     Datagrid,
     Edit,
     List,
+    ReferenceArrayField,
     ReferenceArrayInput,
+    ReferenceField,
     SelectArrayInput,
     SimpleForm,
     SingleFieldList,
@@ -35,6 +37,20 @@ export const CategoryEdit = () => (
             <TextInput source="thumbnail" />
             <TextInput source="primaryColor" />
             <BooleanInput source="status" />
+            <ReferenceArrayField reference="questions" source="questions">
+                <SingleFieldList>
+                    <ChipField source="name" />
+                </SingleFieldList>
+            </ReferenceArrayField>
+            <ArrayField source="questions" label="Questions">
+                <Datagrid>
+                    <ReferenceField
+                        source="id"
+                        reference="questions"
+                        label="Question name"
+                    />
+                </Datagrid>
+            </ArrayField>
         </SimpleForm>
     </Edit>
 );
