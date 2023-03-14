@@ -1,33 +1,17 @@
-import {
-    Admin,
-    Resource,
-    ListGuesser,
-    EditGuesser,
-    ResourceContext,
-    List,
-    ShowGuesser,
-} from "react-admin";
+import { Admin, EditGuesser, Resource, ShowGuesser } from "react-admin";
+import "./App.css";
 import {
     CategoryCreate,
     CategoryEdit,
     CategoryList,
 } from "./components/Categories";
-import {
-    DonationCreate,
-    DonationEdit,
-    DonationList,
-} from "./components/Donation";
-import { OrderCreate, OrderEdit, OrderList } from "./components/Orders";
-import { PaymentCreate, PaymentEdit, PaymentList } from "./components/Payments";
-import { ProductCreate, ProductEdit, ProductList } from "./components/Products";
-import { RecipeEdit, RecipeList } from "./components/Recipes";
-import dataProvider from "./utils/dataProvider";
-import "./App.css";
+import { ChatgptBriefEdit, ChatgptBriefList } from "./components/ChatgptBrief";
 import {
     QuestionCreate,
     QuestionEdit,
     QuestionList,
 } from "./components/Questions";
+import dataProvider from "./utils/dataProvider";
 
 // const dataProvider = dataJsonServer("http://localhost:3000/api");
 
@@ -49,6 +33,11 @@ function App() {
                 edit={QuestionEdit}
                 create={QuestionCreate}
                 recordRepresentation="name"
+            />
+            <Resource
+                name="chatgpt/briefs"
+                list={ChatgptBriefList}
+                edit={ChatgptBriefEdit}
             />
         </Admin>
     );
